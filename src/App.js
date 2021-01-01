@@ -5,7 +5,7 @@ import RecipeSearch from "./components/RecipeSearch"
 
 function App() {
   return (
-    <div>
+    <div style={{backgroundColor:"#EDF2F8"}}>
       <BrowserRouter>    
         <Route path="/" exact component={Recipes} />
         <Route path="/recipeInfo/:id" component={RecipeInfo} />
