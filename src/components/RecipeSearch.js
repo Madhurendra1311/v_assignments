@@ -22,7 +22,13 @@
 
 //     return (
 //         <div>
-            
+//             {
+//                 searchRecipe && searchRecipe.map(item=> {
+//                     return(
+//                         <p>{item.title}</p>
+//                     )
+//                 })
+//             }
 //         </div>
 //     )
 // }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import data from './data.json'
 // import axios from 'axios';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 900,
         marginLeft: 210,
-        // height:350,
     },
     media: {
         height: 100,
@@ -43,30 +42,6 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up('sm')]: {
             display: 'block',
         },
-    },
-    search: {
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
-        },
-        marginRight: theme.spacing(2),
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
-            width: 'auto',
-        },
-    },
-    searchIcon: {
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
     },
     inputRoot: {
         color: 'inherit',
@@ -120,98 +95,131 @@ export default function RecipeInfo(props) {
 
     return (
         <>
-            <>
-                <div className={classes.grow}>
-                    <AppBar position="static">
-                        <Toolbar>
-                            <Typography className={classes.title} variant="h6" noWrap>
-                                Recipe-Information
-                            </Typography>
-                            <div className={classes.grow} />
-                            <div className={classes.sectionDesktop}>
-                                <IconButton
-                                    edge="end"
-                                    aria-label="account of current user"
-                                    aria-controls={menuId}
-                                    aria-haspopup="true"
-                                    color="inherit"
-                                >
-                                    <AccountCircle />
-                                </IconButton>
-                            </div>
-                        </Toolbar>
-                    </AppBar>
-                </div>
-            </><br/>
             <div>
+                <>
+                    <div className={classes.grow}>
+                        <AppBar position="static">
+                            <Toolbar>
+                                <Typography className={classes.title} variant="h6" noWrap>
+                                    Recipe-Information
+                                </Typography>
+                                <div className={classes.grow} />
+                                <div className={classes.sectionDesktop}>
+                                    <IconButton
+                                        edge="end"
+                                        aria-label="account of current user"
+                                        aria-controls={menuId}
+                                        aria-haspopup="true"
+                                        color="inherit"
+                                    >
+                                        <AccountCircle />
+                                    </IconButton>
+                                </div>
+                            </Toolbar>
+                        </AppBar>
+                    </div>
+                </><br/>
+                <div>
                 {
-                    detailedRecipe && detailedRecipe.map(item => {
-                        return (
-                            <Card className={classes.root}>
-                                <CardActionArea>
-                                    <CardMedia className={classes.media}
-                                    component="img"
-                                    alt="Contemplative Reptile"
-                                    height="140"
-                                    image={item.image}
-                                    title="Contemplative Reptile"
-                                    />
-                                <CardContent>
-                                <div style={{display: "flex"}}>
-                                    <div style={{paddingTop:"5px"}}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Title:
-                                        </Typography>
-                                    </div>
-                                    <div style={{paddingTop:"12px"}}>
-                                        <Typography variant="body2" color="textSecondary" component="p">
-                                            {item.title}
-                                        </Typography>
-                                    </div>
-                                </div><br/>
-                                <div style={{display: "flex"}}>
-                                    <div style={{paddingTop:"5px"}}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Summary:
-                                        </Typography>
-                                    </div>
-                                    <div style={{paddingTop:"12px"}}>
-                                        <Typography variant="body2" color="textSecondary" component="p">
-                                            {item.summary}
-                                        </Typography>
-                                    </div>
-                                </div><br/>
-                                <div style={{display: "flex"}}>
-                                    <div style={{paddingTop:"5px"}}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            ReadyInMinutes:
-                                        </Typography>
-                                    </div>
-                                    <div style={{paddingTop:"12px"}}>
-                                        <Typography variant="body2" color="textSecondary" component="p">
-                                            {item.readyInMinutes}
-                                        </Typography>
-                                    </div>
-                                </div><br/>
-                                <div style={{display: "flex"}}>
-                                    <div style={{paddingTop:"5px"}}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Servings:
-                                        </Typography>
-                                    </div>
-                                    <div style={{paddingTop:"12px"}}>
-                                        <Typography variant="body2" color="textSecondary" component="p">
-                                            {item.servings}
-                                        </Typography>
-                                    </div>
-                                </div><br/>
-                                
-                                </CardContent>
-                                </CardActionArea>
-                            </Card>
-                        )
-                    })    
-                }              
+                    isLoading ?
+                        <div>loading...</div>
+                        :
+                        <div>
+                            {
+                                data && data.map(item=>{
+                                    return(
+                                        <Card className={classes.root}>
+                                            <CardActionArea>
+                                                <CardMedia className={classes.media}
+                                                component="img"
+                                                alt="Contemplative Reptile"
+                                                height="140"
+                                                image={item.image}
+                                                title="Contemplative Reptile"
+                                                />
+                                            <CardContent>
+                                            <div style={{display: "flex"}}>
+                                                <div style={{paddingTop:"5px"}}>
+                                                    <Typography gutterBottom variant="h5" component="h2">
+                                                        Title:
+                                                    </Typography>
+                                                </div>
+                                                <div style={{paddingTop:"12px"}}>
+                                                    <Typography variant="body2" color="textSecondary" component="p">
+                                                        {item.title}
+                                                    </Typography>
+                                                </div>
+                                            </div><br/>
+                                            <div style={{display: "flex"}}>
+                                                <div style={{paddingTop:"5px"}}>
+                                                    <Typography gutterBottom variant="h5" component="h2">
+                                                        CreditText:
+                                                    </Typography>
+                                                </div>
+                                                <div style={{paddingTop:"12px"}}>
+                                                    <Typography variant="body2" color="textSecondary" component="p">
+                                                        {item.creditsText}
+                                                    </Typography>
+                                                </div>
+                                            </div><br/>
+                                            <div style={{display: "flex"}}>
+                                                <div style={{paddingTop:"5px"}}>
+                                                    <Typography gutterBottom variant="h5" component="h2">
+                                                        ReadyInMinutes:
+                                                    </Typography>
+                                                </div>
+                                                <div style={{paddingTop:"12px"}}>
+                                                    <Typography variant="body2" color="textSecondary" component="p">
+                                                        {item.readyInMinutes}
+                                                    </Typography>
+                                                </div>
+                                            </div><br/>
+                                            <div style={{display: "flex"}}>
+                                                <div style={{paddingTop:"5px"}}>
+                                                    <Typography gutterBottom variant="h5" component="h2">
+                                                        Servings:
+                                                    </Typography>
+                                                </div>
+                                                <div style={{paddingTop:"12px"}}>
+                                                    <Typography variant="body2" color="textSecondary" component="p">
+                                                        {item.servings}
+                                                    </Typography>
+                                                </div>
+                                            </div><br/>
+                                            <div style={{display: "flex"}}>
+                                                <div style={{paddingTop:"5px"}}>
+                                                    <Typography gutterBottom variant="h5" component="h2">
+                                                        HealthScore:
+                                                    </Typography>
+                                                </div>
+                                                <div style={{paddingTop:"12px"}}>
+                                                    <Typography variant="body2" color="textSecondary" component="p">
+                                                        {item.healthScore}
+                                                    </Typography>
+                                                </div>
+                                            </div><br/>
+                                            <div style={{display: "flex"}}>
+                                                <div style={{paddingTop:"5px"}}>
+                                                    <Typography gutterBottom variant="h5" component="h2">
+                                                        SourceName:
+                                                    </Typography>
+                                                </div>
+                                                <div style={{paddingTop:"12px"}}>
+                                                    <Typography variant="body2" color="textSecondary" component="p">
+                                                        {item.sourceName}
+                                                    </Typography>
+                                                </div>
+                                            </div><br/>
+                                            
+                                            </CardContent>
+                                            </CardActionArea>
+                                        </Card>
+                                    )
+                                })
+                            }
+                        </div>
+                }
+                </div>
             </div>
         </>
     )
