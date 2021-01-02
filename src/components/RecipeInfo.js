@@ -78,7 +78,7 @@ export default function RecipeInfo(props) {
         //     .get(`https://api.spoonacular.com/recipes/${props.match.params.id}/information?includeNutrition=false&apiKey=${apiKey}`)
         //     .then(res=>{
         //         setDetailedRecipe(res.data)
-        //         setIsLoading(false)setDetailedRecipe
+        //         setIsLoading(false)
         //     })
         //     .catch(err=>console.log(err))
     setDetailedRecipe(data.filter(a=> a.id === Number(props.match.params.id))[0])
