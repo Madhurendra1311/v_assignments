@@ -121,16 +121,14 @@ export default function RecipeInfo(props) {
                         <div>loading...</div>
                         :
                         <div>
-                            {
-                                data && data.map(item=>{
-                                    return(
+                            
                                         <Card className={classes.root}>
                                             <CardActionArea>
                                                 <CardMedia className={classes.media}
                                                 component="img"
                                                 alt="Contemplative Reptile"
                                                 height="140"
-                                                image={item.image}
+                                                image={detailedRecipe.image}
                                                 title="Contemplative Reptile"
                                                 />
                                             <CardContent>
@@ -142,7 +140,7 @@ export default function RecipeInfo(props) {
                                                 </div>
                                                 <div style={{paddingTop:"12px"}}>
                                                     <Typography variant="body2" color="textSecondary" component="p">
-                                                        {item.title}
+                                                        {detailedRecipe.title}
                                                     </Typography>
                                                 </div>
                                             </div><br/>
@@ -154,7 +152,7 @@ export default function RecipeInfo(props) {
                                                 </div>
                                                 <div style={{paddingTop:"12px"}}>
                                                     <Typography variant="body2" color="textSecondary" component="p">
-                                                        {item.creditsText}
+                                                        {detailedRecipe.creditsText}
                                                     </Typography>
                                                 </div>
                                             </div><br/>
@@ -166,7 +164,7 @@ export default function RecipeInfo(props) {
                                                 </div>
                                                 <div style={{paddingTop:"12px"}}>
                                                     <Typography variant="body2" color="textSecondary" component="p">
-                                                        {item.readyInMinutes}
+                                                        {detailedRecipe.readyInMinutes}
                                                     </Typography>
                                                 </div>
                                             </div><br/>
@@ -178,7 +176,7 @@ export default function RecipeInfo(props) {
                                                 </div>
                                                 <div style={{paddingTop:"12px"}}>
                                                     <Typography variant="body2" color="textSecondary" component="p">
-                                                        {item.servings}
+                                                        {detailedRecipe.servings}
                                                     </Typography>
                                                 </div>
                                             </div><br/>
@@ -190,7 +188,7 @@ export default function RecipeInfo(props) {
                                                 </div>
                                                 <div style={{paddingTop:"12px"}}>
                                                     <Typography variant="body2" color="textSecondary" component="p">
-                                                        {item.healthScore}
+                                                        {detailedRecipe.healthScore}
                                                     </Typography>
                                                 </div>
                                             </div><br/>
@@ -202,7 +200,7 @@ export default function RecipeInfo(props) {
                                                 </div>
                                                 <div style={{paddingTop:"12px"}}>
                                                     <Typography variant="body2" color="textSecondary" component="p">
-                                                        {item.sourceName}
+                                                        {detailedRecipe.sourceName}
                                                     </Typography>
                                                 </div>
                                             </div><br/>
@@ -210,9 +208,7 @@ export default function RecipeInfo(props) {
                                             </CardContent>
                                             </CardActionArea>
                                         </Card>
-                                    )
-                                })
-                            }
+                                    
                         </div>
                 }
                 </div>
