@@ -16,6 +16,8 @@
     <li>Search by recipe name</li>
     <li>button for each recipe to get its detailed recipe information.</li>
  </ul>
+ 
+ ## netlify link: https://competent-pike-8ba91d.netlify.app
 
 
 
